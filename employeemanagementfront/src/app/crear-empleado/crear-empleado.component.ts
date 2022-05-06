@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Empleado } from '../empleado.interface';
+import { EmpleadoService } from '../empleado.service';
 
 @Component({
   selector: 'app-crear-empleado',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearEmpleadoComponent implements OnInit {
 
-  constructor() { }
+  empleado!: Empleado[];
+  empleadobeta = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    emailId: ''
+  }
+
+  constructor(private empleadoservice: EmpleadoService, private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    this.saveEmpleado();
+  }
+
+  saveEmpleado(){
+    this.empleadoservice.crearEmpleado(this.empleadobeta).subscribe(data => {
+      console.log(data);
+      this.goToListaEmpleados();
+    },
+    error => console.log(error));
+  }
+
+  goToListaEmpleados(){
+    this.router.navigate(['/empleados'])
+
   }
 
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EmpleadoListaComponent } from './empleado-lista/empleado-lista.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CrearEmpleadoComponent } from './crear-empleado/crear-empleado.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CrearEmpleadoComponent } from './crear-empleado/crear-empleado.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
