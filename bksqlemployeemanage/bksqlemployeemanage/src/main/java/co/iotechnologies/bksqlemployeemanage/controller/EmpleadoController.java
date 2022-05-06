@@ -3,13 +3,16 @@ package co.iotechnologies.bksqlemployeemanage.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.iotechnologies.bksqlemployeemanage.exception.ResourceNotFoundException;
 import co.iotechnologies.bksqlemployeemanage.model.Empleado;
 import co.iotechnologies.bksqlemployeemanage.repository.EmpleadoRepository;
 
@@ -30,6 +33,16 @@ public class EmpleadoController {
 	public Empleado crearEmpleado(@RequestBody Empleado empleado) {
 		return empleadoRepository.save(empleado);
 	}
+	
+	@GetMapping("/empleados/{id}")
+	public ResponseEntity<Empleado> buscarEmpleadoPorId(@PathVariable long id) {
+		Empleado empleado = empleadoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Empleado no existe con id:" + id));
+		
+		return ResponseEntity.ok(empleado); 
+		
+	}
+	
+
 	
 	
 	
