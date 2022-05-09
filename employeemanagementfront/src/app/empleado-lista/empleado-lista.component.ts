@@ -28,4 +28,11 @@ export class EmpleadoListaComponent implements OnInit {
     this.router.navigate(['actualizar-empleado', id]);
   }
 
+  deleteEmpleado(id: number){
+    this.empleadoservice.deleteEmpleado(id).subscribe(data =>{
+      console.log(data);
+      this.getEmpleados();
+    })
+  }
+
 }
