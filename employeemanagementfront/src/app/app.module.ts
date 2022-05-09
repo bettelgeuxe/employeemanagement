@@ -7,12 +7,14 @@ import { EmpleadoListaComponent } from './empleado-lista/empleado-lista.componen
 import {HttpClientModule} from '@angular/common/http';
 import { CrearEmpleadoComponent } from './crear-empleado/crear-empleado.component';
 import { FormsModule } from '@angular/forms';
+import { ActualizarEmpleadoComponent } from './actualizar-empleado/actualizar-empleado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoListaComponent,
-    CrearEmpleadoComponent
+    CrearEmpleadoComponent,
+    ActualizarEmpleadoComponent
   ],
   imports: [
     BrowserModule,
