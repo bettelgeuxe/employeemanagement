@@ -1,10 +1,13 @@
 package co.iotechnologies.bksqlemployeemanage.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +47,8 @@ public class EmpleadoController {
 	}
 	@PutMapping("/empleados/{id}")
 	public ResponseEntity<Empleado> actualizarEmpleado(@PathVariable Long id, @RequestBody Empleado empleadoDetalle){
-		Empleado empleado = empleadoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Empleado no existe con id:" + id));
+		Empleado empleado = empleadoRepository.findById(id).
+				orElseThrow(() -> new ResourceNotFoundException("Empleado no existe con id:" + id));
 		empleado.setFirstName(empleadoDetalle.getFirstName());
 		empleado.setLastName(empleadoDetalle.getLastName());
 		empleado.setEmailId(empleadoDetalle.getEmailId());
@@ -54,8 +58,15 @@ public class EmpleadoController {
 		
 	}
 	
-
+	@DeleteMapping("/empleados/{id}")
+	public ResponseEntity<Map<String, Boolean>> borrarEmpleado(@PathVariable Long id){
+		
+		Empleado empleado = empleadoRepository.findById(id).
+				orElseThrow(() -> new ResourceNotFoundException("Empleado no existe con id:" + id));
+		empleadoRepository.delete(empleado);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return ResponseEntity.ok(response);
 	
-	
-	
+	}
 }
