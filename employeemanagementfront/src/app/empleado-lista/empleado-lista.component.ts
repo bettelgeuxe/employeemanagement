@@ -35,4 +35,9 @@ export class EmpleadoListaComponent implements OnInit {
     })
   }
 
+  detalleEmpleado(id: number){
+    this.router.navigate(['detalle-empleado', id]);
+  }
+
+
 }
