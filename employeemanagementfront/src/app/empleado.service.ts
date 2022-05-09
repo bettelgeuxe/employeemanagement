@@ -19,15 +19,22 @@ export class EmpleadoService {
     return this.httpClient.post(`${this.baseURL}`, empleado);
   }
 
-  getEmpleadoById(id: number): Observable<Empleado>{
-    return this.httpClient.get<Empleado>(`${this.baseURL}/${id}`);
+  //cambié tipo a string
+  getEmpleadoById(id: string): Observable<Empleado>{
+    return this.httpClient.get<Empleado>(`${this.baseURL}/id/${id}`);
   }
 
-  updateEmpleado(id: number, empleado: Empleado):Observable<Object>{
-    return this.httpClient.put(`${this.baseURL}/${id}`, empleado);
+  getEmpleadoByCedula(cedula: number): Observable<Empleado>{
+    return this.httpClient.get<Empleado>(`${this.baseURL}/cedula/${cedula}`);
   }
 
-  deleteEmpleado(id: number): Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
+
+  updateEmpleado(id: string, empleado: Empleado):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/id/${id}`, empleado);
+  }
+
+
+  deleteEmpleado(id: string): Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/id/${id}`);
   }
 }

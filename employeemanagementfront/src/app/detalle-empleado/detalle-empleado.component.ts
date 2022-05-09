@@ -10,10 +10,11 @@ import { EmpleadoService } from '../empleado.service';
 })
 export class DetalleEmpleadoComponent implements OnInit {
 
-  id!: number;
-  empleado!: Empleado[];
+  id!: string;
+  empleados!: Empleado[];
   empleadobeta = {
-    id: 0,
+    id!: '',
+    cedula : 0,
     firstName: '',
     lastName: '',
     emailId: ''
@@ -22,6 +23,7 @@ export class DetalleEmpleadoComponent implements OnInit {
   constructor(private route:ActivatedRoute, private empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
+
     this.id = this.route.snapshot.params['id'];
     this.empleadoService.getEmpleadoById(this.id).subscribe(data=>{
       this.empleadobeta = data;

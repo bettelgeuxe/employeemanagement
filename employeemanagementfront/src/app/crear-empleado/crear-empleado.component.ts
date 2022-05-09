@@ -10,15 +10,18 @@ import { EmpleadoService } from '../empleado.service';
 })
 export class CrearEmpleadoComponent implements OnInit {
 
-  empleado!: Empleado[];
+  empleados!: Empleado[];
   empleadobeta = {
-    id: 0,
+    id!: '',
+    cedula : 0,
     firstName: '',
     lastName: '',
     emailId: ''
   }
 
+
   constructor(private empleadoservice: EmpleadoService, private router:Router) { }
+
 
   ngOnInit(): void {
   }

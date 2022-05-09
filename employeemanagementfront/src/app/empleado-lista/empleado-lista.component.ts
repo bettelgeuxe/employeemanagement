@@ -24,18 +24,19 @@ export class EmpleadoListaComponent implements OnInit {
     });
   }
 
-  updateEmpleado(id:number){
+  updateEmpleado(id:string){
     this.router.navigate(['actualizar-empleado', id]);
   }
 
-  deleteEmpleado(id: number){
+
+  deleteEmpleado(id: string){
     this.empleadoservice.deleteEmpleado(id).subscribe(data =>{
       console.log(data);
       this.getEmpleados();
     })
   }
 
-  detalleEmpleado(id: number){
+  detalleEmpleado(id: string){
     this.router.navigate(['detalle-empleado', id]);
   }
 

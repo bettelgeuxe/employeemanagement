@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from '../empleado.interface';
+//import { Empleado } from '../empleado.interface';
 import { EmpleadoService } from '../empleado.service';
 
 @Component({
@@ -10,22 +11,26 @@ import { EmpleadoService } from '../empleado.service';
 })
 export class ActualizarEmpleadoComponent implements OnInit {
 
-  id!: number;
-  empleado!: Empleado[];
+  id!:string;
+  empleados!: Empleado[];
   empleadobeta = {
-    id: 0,
+    id!: '',
+    cedula : 0,
     firstName: '',
     lastName: '',
     emailId: ''
   }
 
+
   constructor(private empleadoService: EmpleadoService, private route: ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.empleadoService.getEmpleadoById(this.id).subscribe(data=>{
-      this.empleadobeta = data;
-    }, error => console.log(error));
+    this.empleadoService.getEmpleadoById(this.id).subscribe(data =>
+      {
+        this.empleadobeta = data;
+      }, error => console.log(error));
+
   }
 
   onSubmit(){
@@ -40,3 +45,4 @@ export class ActualizarEmpleadoComponent implements OnInit {
   }
 
 }
+

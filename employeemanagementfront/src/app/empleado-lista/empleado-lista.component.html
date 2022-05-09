@@ -2,6 +2,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Cedula</th>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Email Id</th>
@@ -10,6 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let empleado of empleados">
+      <td>{{empleado.cedula}}</td>
       <td>{{empleado.firstName}}</td>
       <td>{{empleado.lastName}}</td>
       <td>{{empleado.emailId}}</td>

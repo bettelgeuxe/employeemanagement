@@ -1,6 +1,8 @@
 export interface Empleado {
 
-  id: number;
+
+  id: string;
+  cedula: number;
   firstName: string;
   lastName: string;
   emailId: string;
