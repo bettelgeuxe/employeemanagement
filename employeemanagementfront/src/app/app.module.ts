@@ -9,6 +9,9 @@ import { CrearEmpleadoComponent } from './crear-empleado/crear-empleado.componen
 import { FormsModule } from '@angular/forms';
 import { ActualizarEmpleadoComponent } from './actualizar-empleado/actualizar-empleado.component';
 import { DetalleEmpleadoComponent } from './detalle-empleado/detalle-empleado.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { DetalleEmpleadoComponent } from './detalle-empleado/detalle-empleado.co
     EmpleadoListaComponent,
     CrearEmpleadoComponent,
     ActualizarEmpleadoComponent,
-    DetalleEmpleadoComponent
+    DetalleEmpleadoComponent,
+    LoginComponent,
+    LogoutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
